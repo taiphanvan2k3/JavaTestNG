@@ -34,6 +34,7 @@ public class Lab10_02 {
           System.out.println("Press Enter to continue...");
           Scanner scanner = new Scanner(System.in);
           scanner.nextLine(); // Chờ người dùng nhấn phím Enter
+          scanner.close();
       } finally {
           // Đóng trình duyệt
           driver.quit();

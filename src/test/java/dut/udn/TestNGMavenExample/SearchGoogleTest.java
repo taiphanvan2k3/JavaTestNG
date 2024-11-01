@@ -23,8 +23,10 @@ public class SearchGoogleTest {
           
           // Tạm dừng để xem nội dung
           System.out.println("Press Enter to continue...");
+          
           Scanner scanner = new Scanner(System.in);
           scanner.nextLine(); // Chờ người dùng nhấn phím Enter
+          scanner.close();
       } finally {
           // Đóng trình duyệt
           driver.quit();
