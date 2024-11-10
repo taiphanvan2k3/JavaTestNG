@@ -18,7 +18,7 @@ public class Lab2_Login {
 	@Test
 	public void TestLogin() {
 		System.setProperty("webdriver.edge.driver",
-				Paths.get(System.getProperty("user.dir"), "resources", "msedgedriver.exe").toString());
+				Paths.get(System.getProperty("user.dir"), "test_resources", "msedgedriver.exe").toString());
 
 		EdgeOptions options = new EdgeOptions();
 		// options.addArguments("headless"); // Thêm chế độ headless

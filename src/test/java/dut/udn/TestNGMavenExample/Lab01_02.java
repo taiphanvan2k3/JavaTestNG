@@ -9,7 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.Test;
 
-public class Lab10_02 {
+public class Lab01_02 {
   @Test
   public void LoginGuru() {
 	  System.setProperty("webdriver.edge.driver", "D:\\edgedriver_win64\\msedgedriver.exe");
