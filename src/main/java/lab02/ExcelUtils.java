@@ -1,4 +1,4 @@
-package dut.udn.TestNGMavenExample;
+package lab02;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -170,22 +170,5 @@ public class ExcelUtils {
 		FileOutputStream outputStream = new FileOutputStream(outputPath);
 		workbook.write(outputStream);
 		outputStream.close();
-	}
-
-	public static void main(String[] args) {
-		try {
-			XSSFWorkbook workbook = getWorkbook(DATA_SRC);
-			XSSFSheet sheet = getSheet(workbook, "LOGIN_DATA");
-
-			Object[][] data = readSheetData(sheet);
-			for (int i = 0; i < data.length; i++) {
-				for (int j = 0; j < data[i].length; j++) {
-					System.out.print(data[i][j] + " ");
-				}
-				System.out.println();
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 	}
 }

@@ -1,4 +1,4 @@
-package dut.udn.TestNGMavenExample;
+package selenium.example.lab02;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -25,9 +25,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class LoginTest {
+import lab02.ExcelUtils;
+import lab02.LoginData;
+import lab02.ResponseInfo;
+
+public class MultiLoginTest {
     private WebDriver driver;
-    private final String FILE_PATH = ExcelUtils.DATA_SRC + "test_cases.xlsx";
+    private final String FILE_PATH = Paths
+            .get(System.getProperty("user.dir"), "src/test/resources", "login_data.xlsx")
+            .toString();
+
     private Set<LoginData> logs;
 
     // Đọc từng hàng dữ liệu từ sheet LOGIN_DATA
@@ -36,7 +43,7 @@ public class LoginTest {
     @BeforeClass
     public void init() throws IOException {
         System.setProperty("webdriver.edge.driver",
-                Paths.get(System.getProperty("user.dir"), "test_resources", "msedgedriver.exe").toString());
+                Paths.get(System.getProperty("user.dir"), "src/test/resources", "msedgedriver.exe").toString());
 
         // Dùng LinkedHashSet để đảm bảo thứ tự dữ liệu test không bị thay đổi
         logs = new LinkedHashSet<>();

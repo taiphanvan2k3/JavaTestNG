@@ -1,5 +1,6 @@
-package dut.udn.TestNGMavenExample;
+package selenium.example.lab01;
 
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Scanner;
 
@@ -15,7 +16,8 @@ import org.testng.annotations.Test;
 public class Lab01_01 {
 	@Test
 	public void RegisterAccount() {
-		System.setProperty("webdriver.edge.driver", "D:\\edgedriver_win64\\msedgedriver.exe");
+		System.setProperty("webdriver.edge.driver",
+				Paths.get(System.getProperty("user.dir"), "src/test", "resources", "msedgedriver.exe").toString());
 		EdgeOptions options = new EdgeOptions();
 		WebDriver driver = new EdgeDriver(options);
 
@@ -26,19 +28,19 @@ public class Lab01_01 {
 			driver.findElement(By.id("email")).sendKeys("taiphanvan2403");
 			driver.findElement(By.cssSelector("input[name='password']")).sendKeys("admin@123");
 			driver.findElement(By.cssSelector("input[name='confirmPassword']")).sendKeys("admin@123");
-			
+
 			driver.findElement(By.cssSelector("input[name='submit']")).click();
-			
+
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("a")));
-			
+
 			WebElement loginPageLink = driver.findElement(By.cssSelector("a[href='login.php']"));
 			loginPageLink.click();
-			
+
 			driver.findElement(By.cssSelector("input[name='userName']")).sendKeys("taiphanvan2403");
 			driver.findElement(By.cssSelector("input[name='password']")).sendKeys("admin@123");
 			driver.findElement(By.cssSelector("input[name='submit']")).click();
-			
+
 			// Tạm dừng để xem nội dung
 			System.out.println("Press Enter to continue...");
 			Scanner scanner = new Scanner(System.in);

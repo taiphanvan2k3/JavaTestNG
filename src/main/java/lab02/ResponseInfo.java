@@ -1,4 +1,4 @@
-package dut.udn.TestNGMavenExample;
+package lab02;
 
 public class ResponseInfo {
     private boolean success;

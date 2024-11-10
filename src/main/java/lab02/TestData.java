@@ -1,4 +1,4 @@
-package dut.udn.TestNGMavenExample;
+package lab02;
 
 import java.io.IOException;
 import java.util.Date;
