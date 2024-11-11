@@ -65,7 +65,7 @@ public class MultiLoginTest {
     public void destroy() throws IOException {
         // Sau khi đã thực hiện tất cả test case
         // Ghi dữ liệu vào file Excel
-        LoginData.writeLog(FILE_PATH, "RESULT_TEST", logs);
+        LoginData.writeLog(FILE_PATH, "LOGIN_TEST_RESULT", logs);
     }
 
     @DataProvider(name = "loginData")
@@ -99,7 +99,7 @@ public class MultiLoginTest {
         data.setStatus(actual.equals(expected) ? "PASSED" : "FAILED");
 
         logs.add(data);
-        Assert.assertEquals(expected, actual);
+        Assert.assertEquals(actual, expected);
     }
 
     private ResponseInfo processLogin(String email, String password) {
