@@ -94,7 +94,7 @@ public class MultiSignupTest {
         data.setTestMethod("testSignUp");
         data.setExpected(expected);
 
-        String actual = response.isSuccess() ? "Sign Up Success" : response.getErrorType();
+        String actual = response.isSuccess() ? "SignUp Success" : response.getErrorType();
         data.setActual(actual);
         data.setException(response.getDetailedMessage());
         data.setStatus(actual.equals(expected) ? "PASSED" : "FAILED");
@@ -158,10 +158,10 @@ public class MultiSignupTest {
             // Check sau 3s mà chưa chuyển trang thì báo lỗi
             // Chờ trang reload hoàn tất và toast xuất hiện
 
-            var response = new lab02.ResponseInfo();
+            ResponseInfo response = new lab02.ResponseInfo();
 
             try {
-                new WebDriverWait(driver, Duration.ofSeconds(6)).until(
+                new WebDriverWait(driver, Duration.ofSeconds(3)).until(
                         ExpectedConditions.presenceOfElementLocated(By.cssSelector(".vt-card.error")));
 
                 WebElement toast = driver.findElement(By.cssSelector(".vt-card.error"));
@@ -175,7 +175,7 @@ public class MultiSignupTest {
                     String descriptionText = description.getText();
 
                     response.setSuccess(false);
-                    response.setErrorType("Sign Up Fail");
+                    response.setErrorType("SignUp Fail");
                     response.setDetailedMessage(headerText + ": " + descriptionText);
                     return response;
                 }
@@ -197,7 +197,7 @@ public class MultiSignupTest {
 
             return response;
         } catch (Exception e) {
-            var response = new lab02.ResponseInfo();
+            ResponseInfo response = new ResponseInfo();
             response.setSuccess(false);
             response.setErrorType("Exception");
             response.setDetailedMessage(e.getMessage());

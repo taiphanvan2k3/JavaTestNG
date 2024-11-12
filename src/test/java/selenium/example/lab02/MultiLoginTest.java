@@ -126,24 +126,40 @@ public class MultiLoginTest {
         }
 
         driver.findElement(By.id("submitBTN")).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         try {
-            String expectedUrl = "https://phptravels.net/dashboard";
-            wait.until(ExpectedConditions.urlToBe(expectedUrl));
+            try {
+                new WebDriverWait(driver, Duration.ofSeconds(6)).until(
+                        ExpectedConditions.presenceOfElementLocated(By.cssSelector(".vt-card.error")));
+                WebElement toast = driver.findElement(By.cssSelector(".vt-card.error"));
+                if (toast != null) {
+                    // Lấy nội dung tiêu đề thông báo (h4) và mô tả (p)
+                    WebElement header = toast.findElement(By.cssSelector("h4"));
+                    WebElement description = toast.findElement(By.cssSelector("p"));
 
-            String currentUrl = driver.getCurrentUrl();
-            if (!expectedUrl.equals(currentUrl)) {
+                    // In ra nội dung
+                    String headerText = header.getText();
+                    String descriptionText = description.getText();
+
+                    response.setSuccess(false);
+                    response.setErrorType("Login Fail");
+                    response.setDetailedMessage(headerText + ": " + descriptionText);
+                    return response;
+                }
+
+            } catch (Exception e) {
+            }
+
+            String expectedUrl = "https://phptravels.net/dashboard";
+            String actualUrl = driver.getCurrentUrl();
+
+            if (!expectedUrl.equals(actualUrl)) {
                 response.setSuccess(false);
                 response.setErrorType("Login Fail");
-                response.setDetailedMessage("Redirect to " + currentUrl);
-            } else {
-                response.setSuccess(true);
+                response.setDetailedMessage("Redirect to " + actualUrl);
+                return response;
             }
-            return response;
-        } catch (Exception e) {
-            response.setSuccess(false);
-            response.setErrorType("Login Fail");
-            response.setDetailedMessage(e.getMessage());
+
+            response.setSuccess(true);
             return response;
         } finally {
             driver.quit();
