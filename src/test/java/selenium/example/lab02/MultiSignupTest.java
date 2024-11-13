@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -93,6 +94,8 @@ public class MultiSignupTest {
         data.setPassword(password);
         data.setTestMethod("testSignUp");
         data.setExpected(expected);
+        data.setAction("Test signup function");
+		data.setLogTime(new Date());
 
         String actual = response.isSuccess() ? "SignUp Success" : response.getErrorType();
         data.setActual(actual);
